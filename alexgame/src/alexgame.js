@@ -1,3 +1,4 @@
+jQuery('#videoWin')[0].pause();
 var LEVELS = [
   ["                                                                                ",
    "                                                                                ",
@@ -5,17 +6,17 @@ var LEVELS = [
    "                              v                                                 ",
    "                                                                                ",
    "    x         x x      x x        xxxxx      x       xxxxx    x o x             ",
-   "    x        x   x o x    x      x o  ox     x  o    x  o      x x              ",
+   "    x        x   x o x    x      x!o  ox     x  o    x  o      x x              ",
    "    x   o     x  o o  o  x       x     x     x  o    xxx        x               ",
    "    x  xx       x o o ox         x x  xx     x o o   x  o      x x              ",
    "    x      x     x o x           x     x     xxxxxx  xxxxx    x o x             ",
    "          ox       x                x                                           ",
-   "         xxx       v                x                                       xx  ",
+   " o       xxx       v                x!                                      xx  ",
    "  xx                                xxxxxxx o o           xxxxx              x  ",
    "  x     xxx             o                                                    x  ",
    "  x                                      xxxxx                             o x  ",
    "  x          xxxx       o                                                    x  ",
-   "  x  @       x  x                                                xxxxx       x  ",
+   "  x  @       x  x!! !!!                                          xxxxx       x  ",
    "  xxxxxxxxxxxx  xxxxxxxxxxxxxxx   xxxxxxxxxxxxxxxxxxxx     xxxxxxx   xxxxxxxxx  ",
    "                              x   x                  x     x                    ",
    "                              x!!!x                  x!!!!!x                    ",
@@ -385,8 +386,11 @@ function runGame(plans, Display) {
         startLevel(n + 1);
       }
       else {
-        alert("Well done my dear... you will receive surprise!");
+        alert("New SURPRISE AVAILABLE Love you :3!");
         jQuery('#overlayExampleXl').show();
+        jQuery('#videoWin')[0].pause();
+        jQuery('#videoWin')[0].currentTime = 0;
+        jQuery('#videoWin')[0].load();
       }
     });
   }
