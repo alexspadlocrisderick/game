@@ -49,7 +49,7 @@ var actorchars =  {
 
 function Player(pos) {
 	this.pos = pos.plus(new Vector(0, -.5));
-	this.size = new Vector(.5, 1);
+	this.size = new Vector(1, 1);
 	this.speed = new Vector(0, 0);
 }
 Player.prototype.type = "player";
@@ -152,6 +152,11 @@ DOMDisplay.prototype.drawActors = function() {
 	var wrap = element("div");
 	this.level.actors.forEach(function(actor) {
 		var rect = wrap.appendChild(element("div", "actor " + actor.type));
+    if(actor.type == 'player'){
+      rect.style.background = "url('src/myAvatar2.png') no-repeat right top";
+      rect.style.backgroundSize = '100%';
+      rect.style.backgroundColor = 'transparent';
+    }
 		rect.style.width = actor.size.x * scale + "px";
 		rect.style.height = actor.size.y * scale + "px";
 		rect.style.left = actor.pos.x * scale + "px";
