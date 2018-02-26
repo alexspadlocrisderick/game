@@ -49,7 +49,7 @@ var actorchars =  {
 
 function Player(pos) {
 	this.pos = pos.plus(new Vector(0, -.5));
-	this.size = new Vector(1, 1);
+	this.size = new Vector(1, 1.5);
 	this.speed = new Vector(0, 0);
 }
 Player.prototype.type = "player";
