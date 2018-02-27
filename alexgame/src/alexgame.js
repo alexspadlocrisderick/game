@@ -1,4 +1,4 @@
-//jQuery('#videoWin')[0].pause();
+jQuery('#videoWin')[0].pause();
 var LEVELS = [
   ["                                                                                ",
    "                                                                                ",
@@ -407,10 +407,10 @@ function runGame(plans, Display) {
       }
       else {
         alert("New SURPRISE AVAILABLE Love you :3!");
-        /*jQuery('#overlayExampleXl').show();
+        jQuery('#overlayExampleXl').show();
         jQuery('#videoWin')[0].pause();
         jQuery('#videoWin')[0].currentTime = 0;
-        jQuery('#videoWin')[0].load();*/
+        jQuery('#videoWin')[0].load();
       }
     });
   }
