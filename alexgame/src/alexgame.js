@@ -1,6 +1,10 @@
-jQuery('#videoWin')[0].pause();
+//jQuery('#videoWin')[0].pause();
 var LEVELS = [
   ["                                                                                ",
+   "                                                                                ",
+   "                                                                                ",
+   "                                                                                ",
+   "                                                                                ",
    "                                                                                ",
    "                                         v                 v                    ",
    "                              v                                                 ",
@@ -8,7 +12,7 @@ var LEVELS = [
    "    x         x x      x x        xxxxx      x       xxxxx    x   x             ",
    "    x        x   x   x    x      x!    x     x       x         x x              ",
    "    x         x          x       x     x     x       xxx        x               ",
-   "    x  xx       x      x         x x  xx     x       x         x x              ",
+   "    x  xx       x      x         xx   xx     x       x         x x              ",
    "    x      x     x   x           x     x     xxxxxx  xxxxx    x   x             ",
    "          ox       x                x                                           ",
    " o       xxx       v                x!                                      xx  ",
@@ -16,14 +20,14 @@ var LEVELS = [
    "  x     xxx                                                                  x  ",
    "  x                                      xxxxx                             o x  ",
    "  x          xxxx       o                                                    x  ",
-   "  x  @       x  x!! !!!                                          xxxxx       x  ",
-   "  xxxxxxxxxxxx  xxxxxxxxxxxxxxx   xxxxxxxxxxxxxxxxxxxx     xxxxxxx   xxxxxxxxx  ",
-   "                              x   x                  x     x                    ",
-   "                              x!!!x                  x!!!!!x                    ",
-   "                              x!!!x                  x!!!!!x                    ",
-   "                              xxxxx                  xxxxxxx                    ",
-   "                                                                                ",
-   "                                                                                "]
+   "  x  @       xxxx!! !!!                                          xxxxx       x  ",
+   "  xxxxxxxxxxxxxxxxxxxxxxxxxxxxx   xxxxxxxxxxxxxxxxxxxx     xxxxxxx   xxxxxxxxx  ",
+   "  xxxxxxxxxxxxxxxxxxxxxxxxxxxxx   xxxxxxxxxxxxxxxxxxxx     x                    ",
+   "  xxxxxxxxxxxxxxxxxxxxxxxxxxxxx!!!xxxxxxxxxxxxxxxxxxxx!!!!!x                    ",
+   "  xxxxxxxxxxxxxxxxxxxxxxxxxxxxx!!!xxxxxxxxxxxxxxxxxxxx!!!!!x                    ",
+   "  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ",
+   "  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ",
+   "  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  "]
 ];
 
 function Vector(x, y) {
@@ -142,7 +146,13 @@ DOMDisplay.prototype.drawBackground = function() {
   var rowElement = table.appendChild(element("tr"));
 		rowElement.style.height = scale + "px";
 		row.forEach(function(type) {
-			rowElement.appendChild(element("td", type));
+      if (type == 'wall' ){
+        jQuery(rowElement).append('<td class="wall" style="background-color: transparent !important; border: none; background-repeat: no-repeat; background-position: center center; background-size: 100%; background-image: url(src/background.png);">');
+
+
+      } else {
+        rowElement.appendChild(element("td", type));
+      }
 		});
 	});
 	return table;
@@ -156,11 +166,16 @@ DOMDisplay.prototype.drawActors = function() {
       rect.style.background = "url('src/myAvatar2.png') no-repeat right top";
       rect.style.backgroundSize = '100%';
       rect.style.backgroundColor = 'transparent';
+      rect.style.width = actor.size.x * scale + "px";
+      rect.style.height = actor.size.y * scale + "px";
+      rect.style.left = actor.pos.x * scale + "px";
+      rect.style.top = actor.pos.y * scale + "px";
+    } else {
+      rect.style.width = actor.size.x * scale + "px";
+      rect.style.height = actor.size.y * scale + "px";
+      rect.style.left = actor.pos.x * scale + "px";
+      rect.style.top = actor.pos.y * scale + "px";
     }
-		rect.style.width = actor.size.x * scale + "px";
-		rect.style.height = actor.size.y * scale + "px";
-		rect.style.left = actor.pos.x * scale + "px";
-		rect.style.top = actor.pos.y * scale + "px";
 	});
 	return wrap;
 }
@@ -392,10 +407,10 @@ function runGame(plans, Display) {
       }
       else {
         alert("New SURPRISE AVAILABLE Love you :3!");
-        jQuery('#overlayExampleXl').show();
+        /*jQuery('#overlayExampleXl').show();
         jQuery('#videoWin')[0].pause();
         jQuery('#videoWin')[0].currentTime = 0;
-        jQuery('#videoWin')[0].load();
+        jQuery('#videoWin')[0].load();*/
       }
     });
   }
@@ -403,3 +418,8 @@ function runGame(plans, Display) {
 }
 
 runGame(LEVELS, DOMDisplay);
+jQuery('body').css('background', 'url(src/cloudbackground.gif)');
+jQuery('body').css('background-color', '#000');
+jQuery('body').css('background-repeat', 'no-repeat');
+jQuery('body').css('background-size', 'cover');
+jQuery('body').css('background-position', 'center center');

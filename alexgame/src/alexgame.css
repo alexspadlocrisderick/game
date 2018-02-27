@@ -1,5 +1,14 @@
+html{
+  height: 100%;
+  min-height: 100%;
+}
+
 body {
-  background: #e494fb;
+  background: url(src/cloudbackground.gif);
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 h2 {
@@ -34,8 +43,6 @@ h2 {
 }
 
 .wall {
-  background: #444;
-  border: solid 3px #333;
   box-sizing: content-box;
 }
 
