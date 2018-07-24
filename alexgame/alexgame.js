@@ -4,7 +4,7 @@ var LEVELS = [
    "                                                                                ",
    "                                                                                ",
    "                                                                                ",
-   "                                                                                ",
+   "                                                                   x            ",
    "                                                                  xxx           ",
    "                                                   xx      xx    xx!xx          ",
    "                                    o o      xx                  x!!!x          ",
